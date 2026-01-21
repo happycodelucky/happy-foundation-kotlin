@@ -10,25 +10,29 @@ actual fun String.format(vararg args: Any?): String {
 
     val regEx = "%[\\d|.]*[sdf]|%".toRegex()
 
-    val singleFormats = regEx.findAll(this).map {
-        it.groupValues.first()
-    }.toMutableList()
+    val singleFormats =
+        regEx
+            .findAll(this)
+            .map {
+                it.groupValues.first()
+            }.toMutableList()
 
     val newStrings = this.split(regEx).toMutableList()
     for (arg in args) {
         val newString = newStrings.removeFirst()
         val singleFormat = singleFormats.removeFirstOrNull()
-        returnString += when (arg) {
-            is Double -> {
-                NSString.stringWithFormat(newString + singleFormat, arg)
+        returnString +=
+            when (arg) {
+                is Double -> {
+                    NSString.stringWithFormat(newString + singleFormat, arg)
+                }
+                is Int -> {
+                    NSString.stringWithFormat(newString + singleFormat, arg)
+                }
+                else -> {
+                    NSString.stringWithFormat("$newString%@", arg)
+                }
             }
-            is Int -> {
-                NSString.stringWithFormat(newString + singleFormat, arg)
-            }
-            else -> {
-                NSString.stringWithFormat("$newString%@", arg)
-            }
-        }
     }
 
     if (newStrings.isNotEmpty()) {

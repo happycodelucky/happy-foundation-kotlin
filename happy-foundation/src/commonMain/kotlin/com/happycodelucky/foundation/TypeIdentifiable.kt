@@ -8,7 +8,7 @@ import kotlin.native.ObjCName
  * FIXME: Issue related to using an interface with generics here
  */
 @ObjCName("HappyTypeIdentifiable")
-interface TypeIdentifiable<T: Enum<T>> {
+interface TypeIdentifiable<T : Enum<T>> {
     /**
      * Type discriminator
      */
@@ -18,4 +18,4 @@ interface TypeIdentifiable<T: Enum<T>> {
 /**
  * Identifier function
  */
-fun <T: Enum<T>> TypeIdentifiable<T>.typeIdentifier(): Any = type
+fun <T : Enum<T>> TypeIdentifiable<T>.typeIdentifier(): Any = type

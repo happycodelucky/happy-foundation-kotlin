@@ -56,8 +56,10 @@ fun Uri.toKmpUri(): com.eygraber.uri.Uri = this.toKmpUri()
 fun resourceUri(
     @DrawableRes resource: Int,
     packageName: String? = null,
-): Uri = Uri.Builder()
-    .scheme("android.resource")
-    .authority(packageName)
-    .path(resource.toString())
-    .build()
+): Uri =
+    Uri
+        .Builder()
+        .scheme("android.resource")
+        .authority(packageName)
+        .path(resource.toString())
+        .build()

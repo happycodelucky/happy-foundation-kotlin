@@ -16,13 +16,16 @@ internal object DurationStringSerializer : KSerializer<Duration> {
     override val descriptor: SerialDescriptor =
         PrimitiveSerialDescriptor("DurationString", PrimitiveKind.STRING)
 
-    override fun serialize(encoder: Encoder, value: Duration) {
+    override fun serialize(
+        encoder: Encoder,
+        value: Duration,
+    ) {
         encoder.encodeString(value.toString())
     }
 
-    override fun deserialize(decoder: Decoder): Duration {
-        return Duration.parseOrNull(decoder.decodeString()) ?: Duration.ZERO
-    }
+    override fun deserialize(decoder: Decoder): Duration = Duration.parseOrNull(decoder.decodeString()) ?: Duration.ZERO
 }
 
-typealias SerializableDuration = @Serializable(DurationStringSerializer::class) Duration
+typealias SerializableDuration =
+    @Serializable(DurationStringSerializer::class)
+    Duration

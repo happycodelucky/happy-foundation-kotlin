@@ -16,7 +16,10 @@ import kotlinx.serialization.encoding.Encoder
 internal object HexColorRGBSerializer : KSerializer<Long> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("HexColorRGB", PrimitiveKind.STRING)
 
-    override fun serialize(encoder: Encoder, value: Long) {
+    override fun serialize(
+        encoder: Encoder,
+        value: Long,
+    ) {
         encoder.encodeString("#${value.toString(16).padStart(6, '0')}")
     }
 
@@ -31,5 +34,6 @@ internal object HexColorRGBSerializer : KSerializer<Long> {
     }
 }
 
-typealias SerializableHexColorRGB = @Serializable(HexColorRGBSerializer::class) Long
-
+typealias SerializableHexColorRGB =
+    @Serializable(HexColorRGBSerializer::class)
+    Long

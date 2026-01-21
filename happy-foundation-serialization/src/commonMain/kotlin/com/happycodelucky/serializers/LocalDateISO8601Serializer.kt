@@ -15,18 +15,22 @@ import kotlinx.serialization.encoding.Encoder
  * FIXME: This is not that useful globally, we should instead support date/time format specifications
  */
 internal object LocalDateISO8601Serializer : KSerializer<LocalDate?> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
-        serialName = "LocalDateString",
-        kind = PrimitiveKind.STRING
-    )
+    override val descriptor: SerialDescriptor =
+        PrimitiveSerialDescriptor(
+            serialName = "LocalDateString",
+            kind = PrimitiveKind.STRING,
+        )
 
-    override fun serialize(encoder: Encoder, value: LocalDate?) {
+    override fun serialize(
+        encoder: Encoder,
+        value: LocalDate?,
+    ) {
         encoder.encodeString(value.toString())
     }
 
-    override fun deserialize(decoder: Decoder): LocalDate {
-        return LocalDate.parse(decoder.decodeString())
-    }
+    override fun deserialize(decoder: Decoder): LocalDate = LocalDate.parse(decoder.decodeString())
 }
 
-typealias SerializableLocalDate = @Serializable(LocalDateISO8601Serializer::class) LocalDate
+typealias SerializableLocalDate =
+    @Serializable(LocalDateISO8601Serializer::class)
+    LocalDate

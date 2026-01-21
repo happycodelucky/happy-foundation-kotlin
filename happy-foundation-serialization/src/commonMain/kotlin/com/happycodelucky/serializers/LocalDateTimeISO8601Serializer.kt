@@ -1,6 +1,5 @@
 package com.happycodelucky.serializers
 
-import kotlin.time.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
@@ -13,18 +12,23 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 /**
  * Serializer for [LocalDateTime]
  */
 @OptIn(ExperimentalTime::class)
 internal object LocalDateTimeISO8601Serializer : KSerializer<LocalDateTime> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
-        serialName = "LocalDateTime",
-        kind = PrimitiveKind.STRING
-    )
+    override val descriptor: SerialDescriptor =
+        PrimitiveSerialDescriptor(
+            serialName = "LocalDateTime",
+            kind = PrimitiveKind.STRING,
+        )
 
-    override fun serialize(encoder: Encoder, value: LocalDateTime) {
+    override fun serialize(
+        encoder: Encoder,
+        value: LocalDateTime,
+    ) {
         encoder.encodeString(value.toInstant(TimeZone.UTC).toString())
     }
 
@@ -34,4 +38,6 @@ internal object LocalDateTimeISO8601Serializer : KSerializer<LocalDateTime> {
     }
 }
 
-typealias SerializableLocalDateTime = @Serializable(LocalDateTimeISO8601Serializer::class) LocalDateTime
+typealias SerializableLocalDateTime =
+    @Serializable(LocalDateTimeISO8601Serializer::class)
+    LocalDateTime

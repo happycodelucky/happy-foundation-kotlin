@@ -35,21 +35,22 @@ import kotlin.time.TimeSource
 fun <T> Flow<T>.coalesce(
     window: Duration,
     timeSource: TimeSource = TimeSource.Monotonic,
-): Flow<List<T>> = flow {
-    val buffer = mutableListOf<T>()
-    var windowStart = timeSource.markNow()
+): Flow<List<T>> =
+    flow {
+        val buffer = mutableListOf<T>()
+        var windowStart = timeSource.markNow()
 
-    collect { value ->
-        buffer.add(value)
-        if (windowStart.elapsedNow() >= window) {
+        collect { value ->
+            buffer.add(value)
+            if (windowStart.elapsedNow() >= window) {
+                emit(buffer.toList())
+                buffer.clear()
+                // This is still needed
+                windowStart = timeSource.markNow()
+            }
+        }
+
+        if (buffer.isNotEmpty()) {
             emit(buffer.toList())
-            buffer.clear()
-            // This is still needed
-            windowStart = timeSource.markNow()
         }
     }
-
-    if (buffer.isNotEmpty()) {
-        emit(buffer.toList())
-    }
-}

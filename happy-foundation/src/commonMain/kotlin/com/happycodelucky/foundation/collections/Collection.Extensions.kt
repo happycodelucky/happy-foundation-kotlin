@@ -2,7 +2,6 @@ package com.happycodelucky.foundation.collections
 
 import kotlin.experimental.ExperimentalObjCRefinement
 import kotlin.native.HiddenFromObjC
-import kotlin.native.ShouldRefineInSwift
 
 /**
  * Compares collections for content equality
@@ -45,18 +44,15 @@ infix fun <T> Collection<T>?.contentEquals(other: Collection<T>?): Boolean {
  * added into the MutableCollection, a true value is returned; otherwise a false value
  * is returned.
  */
-fun <E> MutableCollection<E>.addIfNotNull(value: E?): Boolean {
-    return if (value != null) {
+fun <E> MutableCollection<E>.addIfNotNull(value: E?): Boolean =
+    if (value != null) {
         add(value)
     } else {
         false
     }
-}
 
 /**
  * Find the first instance in the [Iterable] that is of type [T] and returns it, or null if none
  * are found
  */
-inline fun <reified T> Iterable<*>.firstInstanceOrNull(): T? {
-    return firstOrNull { it is T }?.let { it as T }
-}
+inline fun <reified T> Iterable<*>.firstInstanceOrNull(): T? = firstOrNull { it is T }?.let { it as T }
