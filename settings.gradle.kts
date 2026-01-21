@@ -27,3 +27,4 @@ dependencyResolutionManagement {
 rootProject.name = "foundation"
 include(":happy-foundation")
 include(":happy-foundation-coroutines")
+include(":happy-foundation-serialization")

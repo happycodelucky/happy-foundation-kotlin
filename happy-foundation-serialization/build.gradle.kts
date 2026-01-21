@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.androidLibrary
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+        import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-private val PACKAGE_NAMESPACE = "com.happycodelucky.foundation.core"
+private val PACKAGE_NAMESPACE = "com.happycodelucky.foundation.serialization"
 private val ANDROID_JAVA_COMPAT = JavaVersion.VERSION_17
 private val ANDROID_JVM = JvmTarget.JVM_17
 
@@ -9,6 +9,7 @@ private val ANDROID_JVM = JvmTarget.JVM_17
 plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -67,8 +68,13 @@ kotlin {
             // Logging
             implementation(libs.touchlabs.kermit)
 
-            // URI (exposed as API)
-            implementation(libs.eygraber.uri.kmp)
+            // Foundation
+            implementation(project.dependencies.project(":happy-foundation"))
+
+            // Coroutines
+            implementation(libs.kotlinx.collections.immutable)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.serialization.json)
         }
 
         //
@@ -96,5 +102,4 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-
 }

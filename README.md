@@ -20,10 +20,11 @@ iOS/Android/Desktop/Web
 Each of the modules here have their own documentation so be sure to click through
 
 ## Modules
-| Module                              | Description                                                                                   |
-|-------------------------------------|-----------------------------------------------------------------------------------------------|
-| `happy-foundation`                  | Foundational types and functions to augment missing bits a bobs                               |
-| `happy-foundation-coroutines`       | Additional helpers to use coroutines more effectively, such as shared jobs, flow helpers, ... |
+| Module                           | Description                                                                                   |
+|----------------------------------|-----------------------------------------------------------------------------------------------|
+| `happy-foundation`               | Foundational types and functions to augment missing bits a bobs                               |
+| `happy-foundation-coroutines`    | Additional helpers to use coroutines more effectively, such as shared jobs, flow helpers, ... |
+| `happy-foundation-serialization` | Kotlin serialization support                                                                  |
 
 
 ## Status
