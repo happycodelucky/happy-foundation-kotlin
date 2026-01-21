@@ -60,6 +60,14 @@ kotlinx-serialization                               = "1.9.0"       # https://gi
 compose-runtime                                     = "1.10.1"      # https://github.com/JetBrains/compose-multiplatform
 
 # ----------------------
+# TOOLING VERSIONS
+# ----------------------
+
+# Spotless is a code formatter that can format many languages including Kotlin, JSON, YAML, etc.
+#
+spotless                                            = "7.0.4"       # https://github.com/diffplug/spotless
+
+# ----------------------
 # MUTLIPLATFORM VERSIONS
 # ----------------------
 
@@ -147,3 +155,6 @@ androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library",
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 #androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
 #kotlinMultiplatformLibary = { id = "org.jetbrains.kotlin.multiplatform.library", version.ref = "kotlin" }
+
+# Tooling plugins
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

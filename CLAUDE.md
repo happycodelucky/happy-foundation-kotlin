@@ -26,6 +26,10 @@ A Kotlin Multiplatform foundation library providing core utilities, coroutine he
 
 # Check dependencies
 ./gradlew dependencies
+
+# Linting
+./gradlew spotlessCheck    # Check formatting
+./gradlew spotlessApply    # Auto-fix formatting
 ```
 
 ## Project Structure
@@ -87,7 +91,17 @@ Follows official Kotlin code style with project-specific settings:
 - **Trailing whitespace**: Trimmed (except in Markdown)
 - **Final newline**: Required
 
-EditorConfig is defined at project root. Use `ktlint` conventions.
+EditorConfig is defined at project root.
+
+### Linting
+
+Uses [Spotless](https://github.com/diffplug/spotless) with ktlint for code formatting:
+
+- **Kotlin/Kts**: ktlint with default rules (trailing commas, expression bodies, etc.)
+- **JSON**: 2-space indentation
+- **YAML**: Jackson formatter
+
+Run `./gradlew spotlessCheck` before committing. Use `./gradlew spotlessApply` to auto-fix.
 
 ### Swift Interop
 Use `@ObjCName` annotation for public interfaces to provide Swift-friendly names:
