@@ -49,7 +49,6 @@ fun <T1, R> StateFlow<T1>.mapNotNullState(transform: (a: T1) -> R): StateFlow<R>
     )
 
 @Deprecated("Prefer using mapLatest instead with explicit starting")
-@OptIn(ExperimentalCoroutinesApi::class)
 fun <T1, R> StateFlow<T1>.mapLatestState(transform: (a: T1) -> R): StateFlow<R> =
     DerivedStateFlow(
         getValue = { transform(this.value) },

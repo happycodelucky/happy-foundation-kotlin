@@ -56,7 +56,9 @@ kotlin {
     sourceSets {
         // KMP-NativeCoroutines uses experimental @ObjcName annotation
         all {
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+            languageSettings {
+                optIn("kotlin.experimental.ExperimentalObjCName")
+            }
         }
 
         //

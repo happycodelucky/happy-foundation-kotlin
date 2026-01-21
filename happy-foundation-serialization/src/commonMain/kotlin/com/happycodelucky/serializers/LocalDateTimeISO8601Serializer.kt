@@ -17,7 +17,6 @@ import kotlin.time.Instant
 /**
  * Serializer for [LocalDateTime]
  */
-@OptIn(ExperimentalTime::class)
 internal object LocalDateTimeISO8601Serializer : KSerializer<LocalDateTime> {
     override val descriptor: SerialDescriptor =
         PrimitiveSerialDescriptor(

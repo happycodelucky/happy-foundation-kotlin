@@ -6,7 +6,6 @@ private val PACKAGE_NAMESPACE = "com.happycodelucky.foundation.coroutines"
 private val ANDROID_JAVA_COMPAT = JavaVersion.VERSION_17
 private val ANDROID_JVM = JvmTarget.JVM_17
 
-
 plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.kotlinMultiplatform)
@@ -29,7 +28,9 @@ kotlin {
 
             freeCompilerArgs.addAll(listOf(
                 // Add arguments here
-                "-opt-in=kotlinx.atomicfu.ExperimentalAtomicApi"
+                "-opt-in=kotlin.concurrent.atomics.ExperimentalAtomicApi",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-opt-in=kotlin.experimental.ExperimentalObjCName"
             ))
         }
     }
@@ -57,8 +58,8 @@ kotlin {
         // KMP-NativeCoroutines uses experimental @ObjcName annotation
         all {
             languageSettings {
-                optIn("ExperimentalAtomicApi")
-                optIn("ExperimentalCoroutinesApi")
+                optIn("kotlin.concurrent.atomics.ExperimentalAtomicApi")
+                optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
                 optIn("kotlin.experimental.ExperimentalObjCName")
             }
         }

@@ -114,7 +114,6 @@ interface CoroutineReusableSharedJobWorker<T> {
  * @property worker Callbacks for the actual work to be performed. These are called on the same coroutine context.
  * @param scope An optional coroutine scope to align cancellation to
  */
-@OptIn(ExperimentalAtomicApi::class)
 class CoroutineReusableSharedJob<T: Any>(
     private val worker: CoroutineReusableSharedJobWorker<T>,
     scope: CoroutineScope? = null

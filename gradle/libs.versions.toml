@@ -58,6 +58,7 @@ kotlinx-datetime                                    = "0.7.1"       # https://gi
 kotlinx-serialization                               = "1.9.0"       # https://github.com/Kotlin/kotlinx.serialization
 
 compose-runtime                                     = "1.10.1"      # https://github.com/JetBrains/compose-multiplatform
+compose-multiplatform                               = "1.10.0"
 
 # ----------------------
 # TOOLING VERSIONS
@@ -136,25 +137,18 @@ touchlabs-kermit =                          { group = "co.touchlab",            
 
 
 [plugins]
-# Compose Compiler Gradle plugin to make setting up and configuring Compose easier
-#   - docs: https://developer.android.com/develop/ui/compose/compiler
-#
-# composeCompiler =                           { id = "org.jetbrains.kotlin.plugin.compose",                                                   version.ref = "kotlin" }
-
+androidMultiplatformLibrary =               { id = "com.android.kotlin.multiplatform.library",                                              version.ref = "android-gradle-plugin" }
+composeCompiler =                           { id = "org.jetbrains.kotlin.plugin.compose",                                                   version.ref = "kotlin" }
 googleKsp =                                 { id = "com.google.devtools.ksp",                                                               version.ref = "google-ksp-plugin" }
+kotlinMultiplatform =                       { id = "org.jetbrains.kotlin.multiplatform",                                                    version.ref = "kotlin" }
+kotlinSerialization =                       { id = "org.jetbrains.kotlin.plugin.serialization",                                             version.ref = "kotlin" }
 touchlabsKmmbridge =                        { id = "co.touchlab.faktory.kmmbridge",                                                         version.ref = "touchlab-kmmbridge-plugin" }
 touchlabsSkie =                             { id = "co.touchlab.skie",                                                                      version.ref = "touchlab-skie-plugin" }
-kotlinSerialization =                       { id = "org.jetbrains.kotlin.plugin.serialization",                                             version.ref = "kotlin" }
+spotless =                                  { id = "com.diffplug.spotless",                                                                 version.ref = "spotless" }
 
-
-#androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
+# Others
+# androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 # composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
-# composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
-# composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-#androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
-#kotlinMultiplatformLibary = { id = "org.jetbrains.kotlin.multiplatform.library", version.ref = "kotlin" }
+ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 
-# Tooling plugins
-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+
