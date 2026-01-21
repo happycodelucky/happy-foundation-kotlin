@@ -1,0 +1,149 @@
+[versions]
+
+# ----------------
+# ANDROID GRADLE VERSIONS
+# ----------------
+
+android-gradle-plugin = "8.13.2"
+android-compileSdk = "36"
+android-minSdk = "35"
+android-targetSdk = "36"
+
+# ----------------
+# ANDROID VERSIONS
+# ----------------
+
+# Expose metadata that helps tools and other developers understand your app's code
+#
+androidx-annotation-jvm                             = "1.9.1"       # https://developer.android.com/jetpack/androidx/releases/annotation
+
+# Core Android libraries that provide backward-compatible versions of Android framework APIs.
+#
+androidx-core                                       = "1.17.0"      # https://developer.android.com/jetpack/androidx/releases/core
+
+# Implement a straightforward, performant way to initialize components at app startup.
+#
+androidx-startup                                    = "1.2.0"       # https://developer.android.com/jetpack/androidx/releases/startup
+
+# Define your UI programmatically with composable functions that describe its shape and
+# data dependencies.
+#
+androidx-compose-bom                                = "2026.01.00"  # https://developer.android.com/jetpack/androidx/releases/compose
+
+# JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture
+# for unit testing frameworks.
+#
+# JUnit (4) is the most widely used version of JUnit, and it is compatible with Android.
+junit4                                              = "4.13.2"      # https://github.com/junit-team/junit4
+
+# ---------------
+# KOTLIN VERSIONS
+# ---------------
+
+# Koltin lanauge and multiplatform support
+#
+kotlin                                              = "2.3.0"      # https://kotlinlang.org
+
+# Kotlin Symbol Processing (KSP) is an API that you can use to develop lightweight compiler plugins
+#
+google-ksp-plugin                                   = "2.2.0-2.0.2" # https://github.com/google/ksp
+
+# Kotlin and kotlin librarys
+#
+#dokka                                               = "1.9.20"      # https://github.com/Kotlin/dokka
+#kotlinx-reflect-lite                                = "1.1.0"       # https://github.com/Kotlin/kotlinx.reflect.lite
+kotlinx-collections-immutable                       = "0.4.0"       # https://github.com/Kotlin/kotlinx.collections.immutable
+kotlinx-coroutines-bom                              = "1.10.2"      # https://github.com/Kotlin/kotlinx.coroutines
+kotlinx-datetime                                    = "0.7.1"       # https://github.com/Kotlin/kotlinx-datetime
+kotlinx-serialization                               = "1.9.0"       # https://github.com/Kotlin/kotlinx.serialization
+
+compose-runtime                                     = "1.10.1"      # https://github.com/JetBrains/compose-multiplatform
+
+# ----------------------
+# MUTLIPLATFORM VERSIONS
+# ----------------------
+
+# A library for working with URIs and URLs in Kotlin Multiplatform
+#
+eygraber-uri-kmp                                    = "0.0.21"      # https://github.com/eygraber/uri-kmp
+
+# Kermit by Touchlab is a Kotlin Multiplatform centralized logging utility.
+#
+touchlabl-kermit                                    = "2.0.8"       # https://github.com/touchlab/Kermit
+
+# KMMBridge is a tool that helps publish Kotlin Multiplatform (KMP) Xcode binaries for use from
+# Swift Package Manager (SPM) and CocoaPods.
+touchlab-kmmbridge-plugin                           = "1.2.1"       # https://github.com/touchlab/KMMBridge
+
+# Swift Kotlin Interface Enhancer (SKIE) is a tool for Kotlin Multiplatform development that
+# enhances the Swift API published from Kotlin.
+#
+touchlab-skie-plugin                                = "0.10.9"      # https://github.com/touchlab/SKIE
+
+
+[libraries]
+
+# -----------------
+# ANDROID LIBRARIES
+# -----------------
+androidx-annotation-jvm =                   { group = "androidx.annotation",            name = "annotation-jvm",                            version.ref = "androidx-annotation-jvm" }
+androidx-core =                             { group = "androidx.core",                  name = "core-ktx",                                  version.ref = "androidx-core" }
+androidx-startup-runtime =                  { group = "androidx.startup",               name = "startup-runtime",                           version.ref = "androidx-startup" }
+
+# -----------------
+# COMPOSE LIBRARIES
+# -----------------
+
+compose-bom =                               { group = "androidx.compose",               name = "compose-bom",                               version.ref = "androidx-compose-bom" }
+compose-runtime =                           { group = "androidx.compose.runtime",       name = "runtime",                                   version.ref = "compose-runtime"  }
+compose-runtime-multiplatform =             { group = "org.jetbrains.compose.runtime",  name = "runtime",                                   version.ref = "compose-runtime" }
+compose-foundation =                        { group = "androidx.compose.foundation",    name = "foundation"                                 } # ,version.ref = "compose-prerelease" }
+
+# ----------------
+# KOTLIN LIBRARIES
+# ----------------
+
+kotlin-reflection =                         { group = "org.jetbrains.kotlin",           name = "kotlin-reflect",                            version.ref = "kotlin" }
+
+kotlinx-coroutines-bom =                    { group = "org.jetbrains.kotlinx",          name = "kotlinx-coroutines-bom",                    version.ref = "kotlinx-coroutines-bom" }
+kotlinx-coroutines =                        { group = "org.jetbrains.kotlinx",          name = "kotlinx-coroutines-core" }
+kotlinx-coroutines-test =                   { group = "org.jetbrains.kotlinx",          name = "kotlinx-coroutines-test" }
+kotlinx-coroutines-android =                { group = "org.jetbrains.kotlinx",          name = "kotlinx-coroutines-android" }
+kotlinx-collections-immutable =             { group = "org.jetbrains.kotlinx",          name = "kotlinx-collections-immutable",             version.ref = "kotlinx-collections-immutable" }
+kotlinx-datetime =                          { group = "org.jetbrains.kotlinx",          name = "kotlinx-datetime",                          version.ref = "kotlinx-datetime" }
+kotlinx-serialization-json =                { group = "org.jetbrains.kotlinx",          name = "kotlinx-serialization-json",                version.ref = "kotlinx-serialization" }
+
+# -----------------
+# TESTING LIBRARIES
+# -----------------
+
+junit =                                     { group = "junit",                          name = "junit",                                     version.ref = "junit4" }
+
+# -----------------------
+# MUTLIPLATFORM LIBRARIES
+# -----------------------
+
+eygraber-uri-kmp =                          { group = "com.eygraber",                   name = "uri-kmp",                                   version.ref = "eygraber-uri-kmp" }
+touchlabs-kermit =                          { group = "co.touchlab",                    name = "kermit",                                    version.ref = "touchlabl-kermit" }
+
+
+[plugins]
+# Compose Compiler Gradle plugin to make setting up and configuring Compose easier
+#   - docs: https://developer.android.com/develop/ui/compose/compiler
+#
+# composeCompiler =                           { id = "org.jetbrains.kotlin.plugin.compose",                                                   version.ref = "kotlin" }
+
+googleKsp =                                 { id = "com.google.devtools.ksp",                                                               version.ref = "google-ksp-plugin" }
+touchlabsKmmbridge =                        { id = "co.touchlab.faktory.kmmbridge",                                                         version.ref = "touchlab-kmmbridge-plugin" }
+touchlabsSkie =                             { id = "co.touchlab.skie",                                                                      version.ref = "touchlab-skie-plugin" }
+kotlinSerialization =                       { id = "org.jetbrains.kotlin.plugin.serialization",                                             version.ref = "kotlin" }
+
+
+#androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
+# composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+# composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+# composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+#androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
+#kotlinMultiplatformLibary = { id = "org.jetbrains.kotlin.multiplatform.library", version.ref = "kotlin" }
